@@ -305,3 +305,4 @@ describe('isLessOrEqualTests', () => {
     assertThrow(() => isLessOrEqual(null, '2'), 'argument must be type of string');
   });
 });
+console.log("nothing")

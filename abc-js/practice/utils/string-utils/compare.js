@@ -89,3 +89,5 @@ export function isLessOrEqual(firstText, secondText) {
         return true;
     }
 }
+
+console.log("nothing")
