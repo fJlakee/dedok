@@ -10,6 +10,3 @@
 
 Более подробно можно ознакомиться на странице [wiki](https://github.com/gis-expert/dedok/wiki)
 
-nothing changed...
-
-
