@@ -3,23 +3,21 @@
  * Если в вхождение не найдено, то возвращает значение -1.
  * Параметр index задает начальную индекс с которой необходимо
  * начать поиск.*/
+import { isString } from './myFunctions.js';
+
 export function indexOf(text, searchString, index) {
     //Hello world!!! It's terminator
     //terminator
-    if(typeof text !== "string"){
-        throw Error("argument must be type of string");
-    }
+    isString(text);
     if(typeof index === "undefined"){
         index = 0;
-    }
-
-    if(index < 0 || index > text.length || index%1!== 0 || (typeof index !== "undefined" && typeof index !== "number")){
-        throw Error("invalid index");
     }
     if(typeof searchString !== "string"){
         throw Error("invalid searchString string");
     }
-
+    if(index < 0 || index > text.length || index%1!== 0 || (typeof index !== "undefined" && typeof index !== "number")){
+        throw Error("invalid index");
+    }
 
     let return_index = -1;
     function substring(local_index){
@@ -38,7 +36,6 @@ export function indexOf(text, searchString, index) {
             return true;
         }
     }
-
     for(let i = index; i < text.length; i+=1){
         if(searchString[0] === text[i]){
             if(substring(i) === true){
@@ -46,6 +43,5 @@ export function indexOf(text, searchString, index) {
             }
         }
     }
-    
     return return_index;
 }

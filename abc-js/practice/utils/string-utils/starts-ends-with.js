@@ -1,6 +1,7 @@
 /** Возвращает булевый результат начинается ли text на search.
   startPosition - необязательный параметр позволяющий указать позицию
   (не индекс) символа который необходимо считать за начало текста.*/
+import {CheckOut} from './myFunctions.js';
 export function startsWith(text, search, startPosition = 0) {
   if(typeof startPosition !== "number"){
     throw Error("invalid position type")
@@ -11,7 +12,7 @@ export function startsWith(text, search, startPosition = 0) {
     if(typeof text !== "string"){
     throw Error("argument text must be type of string")
   }
-      if(search === ""){
+    if(search === ""){
       return true;
     }
     if(startPosition > text.length || startPosition < 0){
@@ -21,26 +22,9 @@ export function startsWith(text, search, startPosition = 0) {
       throw Error("invalid start position or search length");
     }
     let counter = 0;
-    function check(){
-      let arr = "";
-      for(let a = startPosition; a < search.length + startPosition; a+=1){
-        arr+=text[a];
-      }
-      for(let i = 0; i < search.length ; i+=1){
-        if(arr[i] === search[i]){
-          counter+=1;
-        }
-      }
 
-      if(counter === search.length){
-        return 1;
-      }
-      else if(counter !== search.length){
-        return 0;
-      }
-    }
     if(search[0] === text[startPosition]){
-        if(check() === 1){
+        if(CheckOut(startPosition, search, text) === 1){
           return true;
         }
         else{

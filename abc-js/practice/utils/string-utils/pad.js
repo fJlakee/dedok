@@ -1,10 +1,8 @@
 /** Возвращает копию text увеличенный до длины maxLength
  * заполненный в начале символами fillString.
  * Допускается в fillString передавать строку из нескольких символов. */
-export function padStart(text, maxLength, fillString = ' ') {
-    if(typeof text !== "string"){
-        throw Error("argument text must be type of string");
-    }
+import { isString } from './myFunctions.js';
+function typecheck(text, maxLength, fillString){
     if(typeof maxLength === "undefined" || maxLength === null){
         return text;
     }
@@ -14,6 +12,11 @@ export function padStart(text, maxLength, fillString = ' ') {
     if(typeof fillString !== "string"){
         throw Error("argument fillString must be type of string");
     }
+}
+export function padStart(text, maxLength, fillString = ' ') {
+    isString(text);
+    typecheck(text, maxLength, fillString);
+
     let newtext = "";
     if(maxLength >= text.length){
         let untilparam = maxLength - text.length;
@@ -46,18 +49,10 @@ export function padStart(text, maxLength, fillString = ' ') {
  * заполненный в конце символами fillString.
  * Допускается в fillString передавать строку из нескольких символов. */
 export function padEnd(text, maxLength, fillString = ' ') {
-    if(typeof text !== "string"){
-        throw Error("argument text must be type of string");
-    }
-    if(typeof maxLength === "undefined" || maxLength === null){
-        return text;
-    }
-    if(typeof maxLength !== "number"){
-        throw Error("invalid type of maxLength");
-    }
-    if(typeof fillString !== "string"){
-        throw Error("argument fillString must be type of string");
-    }
+    isString(text);
+    typecheck(text, maxLength, fillString);
+
+
     let newtext = "";
     if(maxLength >= text.length){
         for(let i = 0; i < text.length; i+=1){
@@ -89,18 +84,10 @@ export function padEnd(text, maxLength, fillString = ' ') {
  * заполненный в начале и конце символами fillString.
  * Допускается в fillString передавать строку из нескольких символов. */
 export function pad(text, maxLength, fillString = ' ') {
-    if(typeof text !== "string"){
-        throw Error("argument text must be type of string");
-    }
-    if(typeof maxLength === "undefined" || maxLength === null){
-        return text;
-    }
-    if(typeof maxLength !== "number"){
-        throw Error("invalid type of maxLength");
-    }
-    if(typeof fillString !== "string"){
-        throw Error("argument fillString must be type of string");
-    }
+    isString(text);
+    typecheck(text, maxLength, fillString);
+
+
     let maxparam = maxLength - text.length;
     let leftmaxparam = maxparam/2;
     let rightmaxparam = maxparam/2;
